@@ -1,5 +1,0 @@
-Module is resuable piece of code 
-module is encapsulated from other module 
-module has its own scope 
-
-type " module " in package.json what does it do
