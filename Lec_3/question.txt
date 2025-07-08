@@ -1,0 +1,22 @@
+differnece between dependency and dev-dependency?
+
+In Node.js (or any JavaScript project using npm or yarn), dependencies and devDependencies are both packages listed in your package.json file, but they serve different purposes.
+
+1. Dependencies ("dependencies")
+
+These are packages that your project needs to run in production.
+
+    ✅ Required at runtime.
+
+    📦 Examples: express, react, mongoose, etc.
+
+
+2. DevDependencies ("devDependencies")
+
+These are packages that are only needed during development or testing.
+
+    ❌ Not required in production.
+
+    ✅ Used for development tools like testing, compiling, linting, etc.
+
+    📦 Examples: nodemon, eslint, jest, webpack, babel, etc.

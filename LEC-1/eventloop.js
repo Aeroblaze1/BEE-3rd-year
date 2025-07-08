@@ -1,6 +1,9 @@
 const fs=require("fs")
 console.log("start")
 
+
+
+
 setTimeout(()=>{
     console.log("timer callbacl")
 },0)// runs at timer phase
@@ -11,6 +14,11 @@ setImmediate(()=>{
 })
 //runs after polling phase
 
+function dosometask(params) {
+    return new Promise((resolve,reject)=>{
+        resolve("promise chla");
+    })
+}
 
 
 fs.readFile("demo.txt",(data)=>{ 
@@ -25,6 +33,17 @@ fs.readFile("demo.txt",(data)=>{
 })
 
 console.log("end")
+
+dosometask().then((res)=>{
+    console.log(res);
+})
+.catch((err)=>{
+    console.log(err)
+})
+
+process.nextTick(()=>{
+    console.log("next tick");
+})
 
 //top level code is run first then event loop , then setTImeout , then setImmediate
 
@@ -57,3 +76,8 @@ this output when file is not read first(which it should since polling comes befo
  microtaskqueue has priority so if in any phase a microtaskqueue encountered it is run
  * 
  */
+
+ //task happening in threadpool or main thread
+
+ //by default thread pool is size 4 and can expand it up to 128 
+
