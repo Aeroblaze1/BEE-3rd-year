@@ -1,0 +1,36 @@
+to handle asynchronous operations we use callback
+
+function purchaseProduct(Product-name){
+    //do some asynchronous 
+    I/O operations
+    1) get product data from db 
+    2) write order data on user 
+
+}
+purchaseProduct("iphone 16");
+
+console.log("product purchased "); //runs first 
+
+purchased product("iphone 16",function()){
+    console.log("product is purchased");
+}
+
+
+ERROR FIRST CALLBACK 
+- first argument 
+
+
+PROMISE -
+promise is an object which represent eventual completion or failure of an aysnchornous operation 
+state of data inside a promise            |-->pending
+                              resolve-->  |-->filfilled -->.then
+                               reject --> |-->rejected --> .catch
+
+
+
+
+
+
+
+
+
