@@ -1,3 +1,5 @@
+callback and inversion of control
+
 to handle asynchronous operations we use callback
 
 function purchaseProduct(Product-name){
@@ -25,7 +27,6 @@ promise is an object which represent eventual completion or failure of an aysnch
 state of data inside a promise            |-->pending
                               resolve-->  |-->filfilled -->.then
                                reject --> |-->rejected --> .catch
-
 
 
 

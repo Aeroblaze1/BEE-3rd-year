@@ -32,7 +32,9 @@ function buyProduct(product_Name, cb) {
 }
 
 let availableAmount = 20000;
+
 function deductbankamount(amount,cb){
+    
     if(amount>availableAmount){
         return cb("bank balance is low",null);
     }else{
