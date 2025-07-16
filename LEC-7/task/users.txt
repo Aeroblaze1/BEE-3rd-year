@@ -1,0 +1,1 @@
+[{"name":"Nitesh","age":24,"address":"delhi"},{"name":"ritik","age":25,"address":"faridabad"},{"name":"Rtesh","age":19,"address":"bengal"},{"name":"Karan","age":12,"address":"mohali"}]
