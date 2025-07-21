@@ -1,0 +1,123 @@
+why do we need a runtime environment for javascript to run as a backend language , why we need nodejs - (A bridge that allows JavaScript to interact with the operating system, network, and disk — things a browser does not allow.)
+
+HIde application logic too
+
+JavaScript was originally built only for the browser, meaning:
+
+It could only run inside the browser’s environment (like Chrome, Firefox, etc.).
+
+It was meant for frontend tasks like UI interaction, DOM manipulation.
+
+| Method   | Purpose                      | Express Syntax                  |
+| -------- | ---------------------------- | ------------------------------- |
+| `GET`    | Read or retrieve data        | `app.get('/route', handler)`    |
+| `POST`   | Create new data or resource  | `app.post('/route', handler)`   |
+| `PUT`    | Update/replace existing data | `app.put('/route', handler)`    |
+| `PATCH`  | Partially update data        | `app.patch('/route', handler)`  |
+| `DELETE` | Delete data or resource      | `app.delete('/route', handler)` |
+| `ALL`    | Match all HTTP methods       | `app.all('/route', handler)`    |
+
+
+
+
+
+
+```
+https://veloratv.ru/watch/movie/530385?watchparty=Z1YVY2O4
+```
+
+This URL consists of both **path parameters** and **query parameters**. Here's a detailed breakdown of each part:
+
+---
+
+Scheme (Protocol)
+
+```
+https://
+```
+
+* This means it's using **HTTPS** (secure version of HTTP).
+
+---
+
+Host (Domain)
+
+```
+veloratv.ru
+```
+
+* This is the **domain name** of the server you're accessing.
+* It's the base of the website.
+
+---
+
+## 🔍 3. **Path**
+
+```
+/watch/movie/530385
+```
+
+This part is typically broken into **dynamic routing segments** in Express:
+
+* `/watch` — general section for watching content
+* `/movie` — this tells the server you’re requesting a **movie**
+* `/530385` — this is a **movie ID**, likely a unique identifier for a specific movie.
+
+So in an Express app, you might define this route like:
+
+```js
+app.get('/watch/movie/:movieId', (req, res) => {
+    const movieId = req.params.movieId;  // "530385"
+    // Fetch movie by ID and return it
+});
+```
+
+---
+
+## 🔍 4. **Query Parameter**
+
+```
+?watchparty=Z1YVY2O4
+```
+
+This part starts with `?` and contains a **key-value pair**:
+
+* `watchparty` is the **key**
+* `Z1YVY2O4` is the **value**
+
+### Purpose:
+
+* This probably represents a **watch party session code**, used to sync multiple users watching the same movie in real time.
+
+You’d access it in Express like this:
+
+```js
+const partyCode = req.query.watchparty;  // "Z1YVY2O4"
+```
+
+---
+
+## ✅ Summary Table
+
+| Component         | Value                 | Meaning                                    |
+| ----------------- | --------------------- | ------------------------------------------ |
+| Protocol (Scheme) | `https`               | Secure HTTP protocol                       |
+| Host              | `veloratv.ru`         | Domain/server name                         |
+| Path              | `/watch/movie/530385` | Resource location (movie with ID `530385`) |
+| Query Parameter   | `watchparty=Z1YVY2O4` | Extra data: watch party session ID         |
+
+---
+
+## 🔁 Final Mapping to Express
+
+```js
+app.get('/watch/movie/:movieId', (req, res) => {
+    const movieId = req.params.movieId;               // 530385
+    const watchPartyCode = req.query.watchparty;      // Z1YVY2O4
+
+    res.send(`Movie ID: ${movieId}, Watch Party: ${watchPartyCode}`);
+});
+```
+
+Let me know if you want to build a mock Express route using this or want to understand how to secure/validate such parameters.
+
