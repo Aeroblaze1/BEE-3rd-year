@@ -1,0 +1,12 @@
+Document object model 
+-- document API -> window object (can create full HTML)
+    |
+    |---> HTML/XML -- DOM tree 
+            |
+            |--> head {meta,link,script}
+            |
+            |-->body {div,ul }
+
+parent sibling , element traversing from one to another
+
+server side javascript we havte to use apo 
