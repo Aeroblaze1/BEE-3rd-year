@@ -2,14 +2,13 @@
 
 /**
  * 1) Using id
- * 2) Using class  
+ * 2) Using class
  * 3) Using tag
  * 4) querySelector / querySelectorAll
  */
 
 let ele1 = document.getElementById("main-heading");
 console.log("getElementById:", ele1);
-
 
 let ele2 = document.getElementsByClassName("item");
 console.log("getElementsByClassName:", ele2[0]); // HTMLCollection - need to specify index
@@ -67,8 +66,6 @@ ele1.innerHTML = `Hello <strong>World</strong> <em>with HTML</em>
 `;
 //use `    ` so as to use mutliple lines
 
-
-
 console.log("Heading innerHTML:", ele1.innerHTML);
 console.log("Heading innerText:", ele1.innerText);
 console.log("Heading textContent:", ele1.textContent);
@@ -83,11 +80,10 @@ console.log("UL textContent:", ul.textContent);
 console.log("\n=== Changing Multiple Elements ===");
 let allItems = document.querySelectorAll(".item");
 allItems.forEach((item, index) => {
-    item.innerText = `Updated item ${index + 1}`;
+  item.innerText = `Updated item ${index + 1}`;
 });
 
 console.log("All items updated!");
-
 
 /**
  * getAttribute
@@ -98,7 +94,7 @@ console.log("All items updated!");
 console.dir(ele5.getAttribute("id"));
 console.log(ele5.getAttribute("class"));
 
-ele5.setAttribute("id","js");
+ele5.setAttribute("id", "js");
 
 console.log(ele5.classList);
 console.log(ele5.classList.contains("hello"));
@@ -107,6 +103,13 @@ ele5.classList.add("delete");
 
 /**
  * Element.addEventListener("event name",function(){
- * 
+ *
  * })
  */
+
+//signup
+let submit = document.querySelector(".signup");
+let form = document.querySelector("#signup");
+submit.addEventListener("click", function () {
+  form.classList.toggle("#signup");
+});
