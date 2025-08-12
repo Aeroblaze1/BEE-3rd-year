@@ -5,10 +5,8 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// Import user model
 const User = require("./model/user2");
 
-// Create new user
 app.post("/users", async (req, res) => {
   let { email, username, password } = req.body;
 
@@ -26,7 +24,6 @@ app.post("/users", async (req, res) => {
   });
 });
 
-// Get all users
 app.get("/users", async (req, res) => {
   let allUsers = await User.find();
   res.json({

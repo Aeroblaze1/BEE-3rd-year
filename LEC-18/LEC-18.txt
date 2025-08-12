@@ -1,0 +1,50 @@
+1) Create a user
+
+
+POST http://localhost:4445/users
+Content-Type: application/json
+
+{
+  "email": "test@example.com",
+  "username": "john",
+  "password": "pass123"
+}
+
+2) Copy the _id from the response.
+
+3) Create a blog for that user
+
+
+POST http://localhost:4445/blogs
+Content-Type: application/json
+
+{
+  "title": "First Blog",
+  "body": "Hello world",
+  "userId": "PASTE_USER_ID_HERE"
+}
+
+4)Get the user with populated blogs
+
+GET http://localhost:4445/users/PASTE_USER_ID_HERE
+You should now see:
+
+{
+  "success": true,
+  "data": {
+    "_id": "66b9a3c5a83e4a2b342c84a7",
+    "email": "test@example.com",
+    "username": "john",
+    "blogs": [
+      {
+        "_id": "66b9a42aa83e4a2b342c84aa",
+        "title": "First Blog",
+        "body": "Hello world",
+        "userid": "66b9a3c5a83e4a2b342c84a7"
+      }
+    ]
+  }
+}
+
+LIKE I CREATED A USER , COPIED ITS ID AND POSTED THAN IN BLOG JSON under userId and made two blogs under that ID
+NOW I RETREIVED THE USER WITH THE ID , AND THE BLOGS SECTION NOW SHOWS BOTH BLOGS .
