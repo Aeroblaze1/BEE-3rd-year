@@ -6,7 +6,9 @@ app.use(express.urlencoded({extended:true}));
 const Blogs= require("./model/blog");
 const user = require("./model/user");
 const jwt = require("jsonwebtoken");
-const JWT_SECRET = process.env.JWT_SECRET || "okkk";
+const JWT_SECRET = process.env.JWT_SECRET || "meww";
+
+
 
 
 /**

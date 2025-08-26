@@ -2,3 +2,37 @@
 
 
 2) in route post /blogs add middleware isLogin , in this middleware verify jwt toekn and modify req object like req.userId = decode.userId;
+
+
+Restart the server
+Stop Node if running.
+Start: node index.js
+Confirm console shows “server started” and “Connected!”
+Create a user (only once)
+Method: POST
+URL: http://localhost:4455/users
+Body → JSON: { "username": "john_doe", "email": "john@example.com", "password": "p@ssw0rd123" }
+Send → success should be true.
+Login to get a fresh token (signed with the current secret)
+Method: POST
+URL: http://localhost:4455/login
+Body → JSON: { "email": "john@example.com", "password": "p@ssw0rd123" }
+Send → Copy response.token (do NOT include quotes).
+Call the protected endpoint with correct Authorization header
+Method: POST
+URL: http://localhost:4455/blogs
+Auth tab:
+Type: Bearer Token
+Token: paste the token exactly (no quotes, no extra spaces)
+Body → JSON: { "title": "My first blog", "body": "This is the content of my first blog post." }
+Send → You should get success: true. The isLogin middleware reads the token and sets req.userId.
+Checklist to avoid invalid token
+
+Use HTTP: http://localhost:4455 (not https://).
+Use Bearer header correctly:
+Key: Authorization
+Value: Bearer YOUR_JWT_TOKEN
+Capital B in “Bearer”, a single space, then the token. No quotes.
+Do not set both Auth tab Bearer AND a manual Authorization header simultaneously (causes duplicates).
+Regenerate the token after any change to JWT secret or after server restart when you changed code.
+Token expires in 1 hour; if you waited, simply login again.
