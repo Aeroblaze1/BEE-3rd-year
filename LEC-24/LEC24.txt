@@ -1,0 +1,4 @@
+1) CREATE A LOGIN ROUTE AND GENERATE JWT TOKEN WITH PAYLOAD --->{userId = user._id}
+
+
+2) in route post /blogs add middleware isLogin , in this middleware verify jwt toekn and modify req object like req.userId = decode.userId;
