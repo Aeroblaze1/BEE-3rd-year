@@ -14,17 +14,17 @@ async function addUser(email,name,password){
      })
 }
 
-addUser("siddhantb610@gmail.com","Siddhant","1234")
-.then(()=>{
-    console.log("user added successfully");
-})
-.catch(err => console.error(err))
+// addUser("siddhantb610@gmail.com","Siddhant","1234")
+// .then(()=>{
+//     console.log("user added successfully");
+// })
+// .catch(err => console.error(err))
 
-addUser("arayan012@gmail.com","Arayan","0987")
-.then(()=>{
-    console.log("user added successfully");
-})
-.catch(err => console.error(err))
+// addUser("arayan012@gmail.com","Arayan","0987")
+// .then(()=>{
+//     console.log("user added successfully");
+// })
+// .catch(err => console.error(err))
 
 async function addTweet(content,userId){
     await prisma.tweet.create({
@@ -100,6 +100,25 @@ async function updateTweet(tweetid,userId,updatedContent){
 updateTweet("1","1","update tweet")
 .then(()=>{
     console.log("tweet updated successfully")
+})
+.catch(err => console.error(err))
+.finally(() => {
+    prisma.$disconnect();
+})
+
+
+//create a function to delete user by id;
+async function deleteUser(userId){
+    await prisma.user.delete({
+        where: {
+            id: Number(userId)
+        }
+    })
+}
+
+deleteUser(1)
+.then(()=>{
+    console.log("user deleted successfully")
 })
 .catch(err => console.error(err))
 .finally(() => {
